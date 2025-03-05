@@ -1,0 +1,1027 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style type = "text/css">
+      body
+      {
+      font-family: arial;
+      font-size: 13px;
+      }
+      #map_canvas
+      {
+      width: 600px;
+      height:  500px;
+      float:   left;
+      }
+      #info_panel
+      {
+      float: left;
+      margin-left: 30px;
+      }
+      #info_panel div
+      {
+        margin-bottom: 5px;
+      }
+    </style>
+
+    <title>CSLLC Store Boundary Selection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrnibZUz0KbIuTH5MFBhRB9IOPShotZio"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+     google.load("earth", "1.x", { "other_params":"sensor=false"});
+
+     var geocoder = new google.maps.Geocoder();
+     var warn_mark_idx    = 10;
+
+     var warn_idx = 0;
+     var halt_idx = 0;
+
+     var warn_path_coordinates = [
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 ),
+        new google.maps.LatLng( 0.0, 0.0 )
+    ];
+
+     var halt_path_coordinates = [
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0),
+        new google.maps.LatLng(0.0, 0.0)
+    ];
+     var warn_boundary_text = [':BND1'];
+     var halt_boundary_text = [':BND2'];
+
+     var warn_boundary = [
+       ['W1',  warn_path_coordinates[0], 1  ],
+       ['W2',  warn_path_coordinates[1], 2  ],
+       ['W3',  warn_path_coordinates[2], 3  ],
+       ['W4',  warn_path_coordinates[3], 4  ],
+       ['W5',  warn_path_coordinates[4], 5  ],
+       ['W6',  warn_path_coordinates[5], 6  ],
+       ['W7',  warn_path_coordinates[6], 7  ],
+       ['W8',  warn_path_coordinates[7], 8  ],
+       ['W9',  warn_path_coordinates[8], 9  ],
+       ['W10', warn_path_coordinates[9], 10 ]
+     ];
+
+     var halt_boundary = [
+       ['H1',  halt_path_coordinates[0],  1 ],
+       ['H2',  halt_path_coordinates[1],  2 ],
+       ['H3',  halt_path_coordinates[2],  3 ],
+       ['H4',  halt_path_coordinates[3],  4 ],
+       ['H5',  halt_path_coordinates[4],  5 ],
+       ['H6',  halt_path_coordinates[5],  6 ],
+       ['H7',  halt_path_coordinates[6],  7 ],
+       ['H8',  halt_path_coordinates[7],  8 ],
+       ['H9',  halt_path_coordinates[8],  9 ],
+       ['H10', halt_path_coordinates[9], 10 ]
+     ];
+
+var marker_number = 0;
+var marker_title;
+var map;
+var marker;
+var marker_01;
+var marker_02;
+var marker_03;
+var marker_04;
+var marker_05;
+var marker_06;
+var marker_07;
+var marker_08;
+var marker_09;
+var marker_10;
+var marker_11;
+var marker_12;
+var marker_13;
+var marker_14;
+var marker_15;
+var marker_16;
+var marker_17;
+var marker_18;
+var marker_19;
+var marker_20;
+var info_window = new google.maps.InfoWindow();;
+
+var warn_plot;
+var halt_plot;
+
+function geocodePosition(pos) 
+{
+  geocoder.geocode( { latLng: pos },
+    function(responses) 
+    {
+      if (responses && responses.length > 0) 
+      {
+        updateMarkerAddress(responses[0].formatted_address);
+      }
+      else 
+      {
+        updateMarkerAddress('Cannot determine address at this location.');
+      }
+    }
+  );
+}
+
+function updateMarkerStatus(str) 
+{
+ document.getElementById('markerStatus').innerHTML = str;
+}
+
+function updateMarkerAddress(str) 
+{
+  document.getElementById('address1').innerHTML = "Closest Matching Address " + str;
+}
+
+
+function updateMarkerPosition(latLng) 
+{
+  document.getElementById('info').innerHTML = [latLng.lat(),
+                                               latLng.lng()
+                                              ].join(', ');
+  //document.getElementById('posit').innerHTML = [
+  document.form1.lat.value = [latLng.lat()];
+  document.form1.lon.value = [latLng.lng()];
+
+  document.getElementById('info').innerHTML   = "CURR POS:      " + latLng;
+  document.getElementById('infidx').innerHTML = "MARKer Index:  " + warn_mark_idx;
+
+  document.getElementById('infw0').innerHTML = "W01: " + warn_path_coordinates[0];
+  document.getElementById('infw1').innerHTML = "W02: " + warn_path_coordinates[1];
+  document.getElementById('infw2').innerHTML = "W03: " + warn_path_coordinates[2];
+  document.getElementById('infw3').innerHTML = "W04: " + warn_path_coordinates[3];
+  document.getElementById('infw4').innerHTML = "W05: " + warn_path_coordinates[4];
+  document.getElementById('infw5').innerHTML = "W06: " + warn_path_coordinates[5];
+  document.getElementById('infw6').innerHTML = "W07: " + warn_path_coordinates[6];
+  document.getElementById('infw7').innerHTML = "W08: " + warn_path_coordinates[7];
+  document.getElementById('infw8').innerHTML = "W09: " + warn_path_coordinates[8];
+  document.getElementById('infw9').innerHTML = "W10:"  + warn_path_coordinates[9];
+  document.getElementById('infh0').innerHTML = "H01: " + halt_path_coordinates[0];
+  document.getElementById('infh1').innerHTML = "H02: " + halt_path_coordinates[1];
+  document.getElementById('infh2').innerHTML = "H03: " + halt_path_coordinates[2];
+  document.getElementById('infh3').innerHTML = "H04: " + halt_path_coordinates[3];
+  document.getElementById('infh4').innerHTML = "H05: " + halt_path_coordinates[4];
+  document.getElementById('infh5').innerHTML = "H06: " + halt_path_coordinates[5];
+  document.getElementById('infh6').innerHTML = "H07: " + halt_path_coordinates[6];
+  document.getElementById('infh7').innerHTML = "H08: " + halt_path_coordinates[7];
+  document.getElementById('infh8').innerHTML = "H09: " + halt_path_coordinates[8];
+  document.getElementById('infh9').innerHTML = "H10: " + halt_path_coordinates[9];
+ }
+
+function initialize() 
+{
+  google.earth.createInstance('map_3d', init_cb, failure_cb);
+
+  var geneva = new google.maps.LatLng(41.864346, -88.346300);
+            
+  var map_options =
+  {
+    center: geneva, 
+    zoom: 17,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  };
+
+  map = new google.maps.Map( document.getElementById('map_canvas'),
+                             map_options);
+
+  var poly_options = {
+      strokeColor: '#00AA00',
+      strokeOpacity: 1.0,
+      strokeWeight: 0, 
+      map: map
+    }
+
+  google.maps.event.addListener( map,
+                                 'click',
+                                 place_marker
+                               );
+ }
+
+function init_cb(instance) 
+{
+  ge = instance;
+  ge.getWindwo().setVisiblity(true);
+}
+
+function failure_cb(error_code) 
+{
+
+}
+
+function put_warn_plot()
+{
+  if ( warn_plot )
+  {
+    warn_plot.setMap(null);
+  }
+
+  warn_plot = new google.maps.Polygon(
+    {
+      path: warn_path_coordinates,
+      strokeColor: '#FFD712',
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+      fillColor: '#12FF61',
+      fillOpacity: 0.50
+    }
+  );
+  warn_plot.setMap(map);
+}
+
+
+function put_halt_plot()
+{
+  if ( halt_plot )
+  {
+    halt_plot.setMap(null);
+  }
+
+
+  halt_plot = new google.maps.Polygon(
+    {
+      path: halt_path_coordinates,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+      fillColor: '#FFD712',
+      fillOpacity: 0.50
+    }
+  );
+  halt_plot.setMap(map);
+  put_warn_plot();
+}
+
+function update_halt_boundary(Location)
+{
+  var loop_idx;
+  for ( loop_idx = ( marker_number - warn_mark_idx ); loop_idx < 10; loop_idx++ )
+    halt_path_coordinates[ loop_idx ] = Location;
+
+
+}
+
+function put_warn_boundary() 
+{
+  warn_mark_idx = marker_number;
+}
+
+function put_halt_boundary() 
+{
+
+ var temp_str;
+ var lat_lng;
+ var w = window.open();
+ var doc = w.document.open("text/html", "replace");
+ var txt = "<html><body>";
+ var close_txt = "</body></html>"
+ doc.write(txt);
+
+ var idx_str;
+ var lat_lng_ck = 0;
+ var ck_len;
+ var val_dec;
+
+
+// var   num;
+
+ for (var coord_loop = 0;
+          coord_loop < warn_idx;
+          coord_loop++) 
+ {
+   lat_lng = warn_path_coordinates[coord_loop];
+
+   doc.writeln( warn_boundary_text[0] );
+
+   if ( ( coord_loop + 1 ) == 10 )
+     idx_str = ( coord_loop + 1 );
+   else
+     idx_str = "0" + ( coord_loop + 1 );
+   doc.writeln( idx_str );
+
+   num = lat_lng.lat();
+   var lat_num = num.toFixed(6);
+   doc.writeln( lat_num );
+
+   lat_lng_ck += ( parseInt( Number(lat_num.charCodeAt(0)).toString(16), 16 ) +
+                   parseInt( Number(lat_num.charCodeAt(1)).toString(16), 16 ) +
+                   parseInt( Number(lat_num.charCodeAt(2)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(3)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(4)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(5)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(6)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(7)).toString(16), 16) +
+                   parseInt( Number(lat_num.charCodeAt(8)).toString(16), 16));
+
+
+   num = lat_lng.lng();
+   var lng_num = num.toFixed(6);
+
+   lat_lng_ck   += (parseInt(Number(lng_num.charCodeAt(0)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(1)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(2)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(3)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(4)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(5)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(6)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(7)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(8)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(9)).toString(16), 16));
+
+
+   doc.writeln( lng_num );
+   doc.writeln("<br/>");
+ }
+
+  for (var coord_loop = 0;
+          coord_loop < halt_idx;
+          coord_loop++) 
+  {
+   lat_lng = halt_path_coordinates[coord_loop];
+   doc.writeln( halt_boundary_text[0] );
+
+
+   if ( ( coord_loop + 1 ) == 10 )
+     idx_str = ( coord_loop + 1 );
+   else
+     idx_str = "0" + ( coord_loop + 1 );
+   doc.writeln( idx_str );
+
+//   num = coord_loop + 1;
+//   doc.writeln( coord_loop + 1 );
+
+   num = lat_lng.lat();
+   var lat_num = num.toFixed(6);
+   doc.writeln( lat_num );
+
+   lat_lng_ck += (parseInt(Number(lat_num.charCodeAt(0)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(1)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(2)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(3)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(4)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(5)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(6)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(7)).toString(16), 16) +
+                   parseInt(Number(lat_num.charCodeAt(8)).toString(16), 16));
+
+
+   num = lat_lng.lng();
+   var lng_num = num.toFixed(6);
+
+   lat_lng_ck += (parseInt(Number(lng_num.charCodeAt(0)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(1)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(2)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(3)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(4)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(5)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(6)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(7)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(8)).toString(16), 16) +
+                   parseInt(Number(lng_num.charCodeAt(9)).toString(16), 16));
+
+
+   doc.writeln( lng_num );
+   doc.writeln("<br/>");
+  }
+
+  lat_lng_ck += (0x30 + 0x30 + 0x2E);
+
+  doc.writeln( lat_lng_ck );
+  doc.write(close_txt);
+
+ doc.close();
+
+}
+
+function put_lat_lng(location)
+{
+  var num;
+  var new_num;
+
+  num = location.lat();
+  new_num = num.toFixed(6);
+  document.writeln( new_num );
+  num = location.lng();
+  new_num = num.toFixed(6);
+  document.writeln( new_num );
+  doc.writeln("<br/>");
+}
+
+
+  function code_address()
+  {
+    var address  = document.getElementById('address').value;
+    geocoder.geocode( { 'address': address },
+      function(results, status)
+      {
+        if (status == google.maps.GeocoderStatus.OK)
+        {
+          map.setCenter(results[0].geometry.location);
+        }
+        else
+        {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      }
+    );
+  }
+
+  function place_marker(event) 
+  {
+    if (marker_number < 20 ) 
+    {
+     if (marker_number < warn_mark_idx ) {
+      var new_marker = warn_boundary[marker_number];
+      warn_path_coordinates[marker_number] = event.latLng;
+      warn_boundary[marker_number] = event.latLng;
+
+      if ( warn_idx == 0 )
+      {
+        warn_path_coordinates[1] = warn_path_coordinates[0];
+        warn_path_coordinates[2] = warn_path_coordinates[0];
+        warn_path_coordinates[3] = warn_path_coordinates[0];
+        warn_path_coordinates[4] = warn_path_coordinates[0];
+        warn_path_coordinates[5] = warn_path_coordinates[0];
+        warn_path_coordinates[6] = warn_path_coordinates[0];
+        warn_path_coordinates[7] = warn_path_coordinates[0];
+        warn_path_coordinates[8] = warn_path_coordinates[0];
+        warn_path_coordinates[9] = warn_path_coordinates[0];
+      }
+
+      warn_idx++;
+     }
+     else if (marker_number < 20) {
+      var new_marker = halt_boundary[(marker_number - warn_mark_idx)];
+      halt_path_coordinates[marker_number - warn_mark_idx] = event.latLng;
+//      halt_path_coordinates[marker_number - warn_mark_idx + 1] = halt_path_coordinates[0];
+      halt_boundary[marker_number - warn_mark_idx] = event.latLng;
+      if ( halt_idx == 0 )
+      {
+        halt_path_coordinates[1] = halt_path_coordinates[0];
+        halt_path_coordinates[2] = halt_path_coordinates[0];
+        halt_path_coordinates[3] = halt_path_coordinates[0];
+        halt_path_coordinates[4] = halt_path_coordinates[0];
+        halt_path_coordinates[5] = halt_path_coordinates[0];
+        halt_path_coordinates[6] = halt_path_coordinates[0];
+        halt_path_coordinates[7] = halt_path_coordinates[0];
+        halt_path_coordinates[8] = halt_path_coordinates[0];
+        halt_path_coordinates[9] = halt_path_coordinates[0];
+      }
+      halt_idx++;
+     }
+
+
+
+        var my_marker = new google.maps.Marker( { position: event.latLng,
+                                         map: map,
+                                         draggable:true,
+                                         title:new_marker[0],
+                                         zIndex: new_marker[3]
+                                       }
+                                      );
+
+
+     if ( marker_number == 0 )
+       marker_01 = my_marker;
+     else if ( marker_number == 1 )
+       marker_02 = my_marker;
+     else if ( marker_number == 2 )
+       marker_03 = my_marker;
+     else if ( marker_number == 3 )
+       marker_04 = my_marker;
+     else if ( marker_number == 4 )
+       marker_05 = my_marker;
+     else if ( marker_number == 5 )
+       marker_06 = my_marker;
+     else if ( marker_number == 6 )
+       marker_07 = my_marker;
+     else if ( marker_number == 7 )
+       marker_08 = my_marker;
+     else if ( marker_number == 8 )
+       marker_09 = my_marker;
+     else if ( marker_number == 9 )
+       marker_10 = my_marker;
+     else if ( marker_number == 10 )
+       marker_11 = my_marker;
+     else if ( marker_number == 11 )
+       marker_12 = my_marker;
+     else if ( marker_number == 12 )
+       marker_13 = my_marker;
+     else if ( marker_number == 13 )
+       marker_14 = my_marker;
+     else if ( marker_number == 14 )
+       marker_15 = my_marker;
+     else if ( marker_number == 15 )
+       marker_16 = my_marker;
+     else if ( marker_number == 16 )
+       marker_17 = my_marker;
+     else if ( marker_number == 17 )
+       marker_18 = my_marker;
+     else if ( marker_number == 18 )
+       marker_19 = my_marker;
+     else if ( marker_number == 19 )
+       marker_20 = my_marker;
+
+     if ( marker_number >= 2 )
+       put_warn_plot();
+
+     if ( halt_idx >= 3 )
+       put_halt_plot();
+  
+//     geocodePosition( my_marker.getPosition());
+     updateMarkerPosition(my_marker.getPosition());
+
+//      google.maps.event.addListener( my_marker,
+//                                     'dragstart',
+//                                     function() 
+//         {
+//          updateMarkerStatus('Dragging...');
+//         }
+//      );
+
+
+      google.maps.event.addListener( my_marker,
+                                     'click',
+                                     function() 
+        {
+          updateMarkerStatus('clicked...');
+//          info_window.setContent(warn_boundary_text[marker_number]);
+//          info_window.open(map, my_marker);
+
+//          updateMarkerPosition(my_marker.getPosition());
+        }
+      );
+
+      google.maps.event.addListener( my_marker,
+                                     'drag',
+                                     function() 
+        {  
+          updateMarkerStatus('Dragggging...');
+//          updateMarkerPosition( my_marker.getPosition());
+         }
+      );
+
+
+         google.maps.event.addListener(my_marker,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition( my_marker.getPosition());
+             marker_title = my_marker.getTitle();
+           }
+        );
+
+     }
+
+
+      marker_number++;
+
+      google.maps.event.addListener(marker_01,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_01.getPosition());
+             warn_path_coordinates[0] = marker_01.getPosition();
+            
+             if ( warn_mark_idx == 10 )
+             {
+//               warn_path_coordinates[ marker_number ] = marker_01.getPosition();
+               var loop_idx;
+               for ( loop_idx = marker_number; loop_idx < 10; loop_idx++ )
+                 warn_path_coordinates[ loop_idx ] = marker_01.getPosition();
+             }
+             else
+             {
+               var loop_idx;
+               for ( loop_idx = warn_mark_idx; loop_idx < 10; loop_idx++ )
+                 warn_path_coordinates[ loop_idx ] = marker_01.getPosition();
+             }
+             updateMarkerPosition(marker_01.getPosition());
+             put_warn_plot();
+          }
+        );
+
+         google.maps.event.addListener(marker_02,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_02.getPosition());
+             warn_path_coordinates[1] = marker_02.getPosition();
+             updateMarkerPosition(marker_02.getPosition());
+             put_warn_plot();
+          }
+        );
+
+         google.maps.event.addListener(marker_03,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_03.getPosition());
+             warn_path_coordinates[2] = marker_03.getPosition();
+             updateMarkerPosition(marker_03.getPosition());
+             put_warn_plot();
+          }
+        );
+
+
+         google.maps.event.addListener(marker_04,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_04.getPosition());
+             warn_path_coordinates[3] = marker_04.getPosition();
+             updateMarkerPosition(marker_04.getPosition());
+             put_warn_plot();
+          }
+        );
+
+         google.maps.event.addListener(marker_05,
+                                       'dragend',
+                                       function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_05.getPosition());
+             if ( warn_idx <= 4 )
+             {
+               halt_path_coordinates[( 4 - warn_idx ) ] = marker_05.getPosition();
+
+               if ( warn_mark_idx == 4 )
+               {
+                 update_halt_boundary( marker_05.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = ( marker_number - warn_mark_idx ); loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_05.getPosition();
+               }
+
+               updateMarkerPosition(marker_05.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[4] = marker_05.getPosition();
+               updateMarkerPosition(marker_05.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+      google.maps.event.addListener(marker_06,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_06.getPosition());
+             if ( warn_idx <= 5 )
+             {
+               if ( warn_mark_idx == 5 )
+               {
+                 update_halt_boundary( marker_06.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = ( marker_number - warn_mark_idx ); loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_06.getPosition();
+               }
+
+               halt_path_coordinates[ ( 5 - warn_idx ) ] = marker_06.getPosition();
+               updateMarkerPosition(marker_06.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[5] = marker_06.getPosition();
+               updateMarkerPosition(marker_06.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+
+      google.maps.event.addListener(marker_07,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_07.getPosition());
+
+             if ( warn_idx <= 6 )
+             {
+
+               if ( warn_mark_idx == 6 )
+               {
+                 update_halt_boundary( marker_07.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = warn_mark_idx; loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_07.getPosition();
+               }
+
+               halt_path_coordinates[ ( 6 - warn_idx ) ] = marker_07.getPosition();
+               updateMarkerPosition(marker_07.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[6] = marker_07.getPosition();
+               updateMarkerPosition(marker_07.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+      google.maps.event.addListener(marker_08,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_08.getPosition());
+
+             if ( warn_idx <= 7 )
+             {
+
+               if ( warn_mark_idx == 7 )
+               {
+                 update_halt_boundary( marker_08.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = warn_mark_idx; loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_08.getPosition();
+               }
+
+               halt_path_coordinates[ ( 7 - warn_idx ) ] = marker_08.getPosition();
+               updateMarkerPosition(marker_08.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[7] = marker_08.getPosition();
+               updateMarkerPosition(marker_08.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+
+      google.maps.event.addListener(marker_09,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_08.getPosition());
+
+             if ( warn_idx <= 8 )
+             {
+               if ( warn_mark_idx == 8 )
+               {
+                 update_halt_boundary( marker_09.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = warn_mark_idx; loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_07.getPosition();
+               }
+               halt_path_coordinates[ 8 - warn_idx ] = marker_09.getPosition();
+               updateMarkerPosition(marker_09.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[8] = marker_09.getPosition();
+               updateMarkerPosition(marker_09.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+
+      google.maps.event.addListener(marker_10,
+                                     'dragend',
+                                     function() 
+           {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_10.getPosition());
+
+
+             if ( warn_idx <= 9 )
+             {
+               if ( warn_mark_idx == 9 )
+               {
+                 update_halt_boundary( marker_10.getPosition());
+//                 var loop_idx;
+//                 for ( loop_idx = warn_mark_idx; loop_idx < 10; loop_idx++ )
+//                  halt_path_coordinates[ loop_idx ] = marker_10.getPosition();
+               }
+               halt_path_coordinates[ 9 - warn_idx ] = marker_10.getPosition();
+               updateMarkerPosition(marker_10.getPosition());
+               put_halt_plot();
+             }
+             else
+             {
+               warn_path_coordinates[9] = marker_10.getPosition();
+               updateMarkerPosition(marker_10.getPosition());
+               put_warn_plot();
+             }
+          }
+        );
+
+
+      google.maps.event.addListener(marker_11,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_11.getPosition());
+
+             halt_path_coordinates[ 10 - warn_idx ] = marker_11.getPosition();
+             updateMarkerPosition(marker_11.getPosition());
+             put_halt_plot();
+          }
+        );
+
+      google.maps.event.addListener(marker_12,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_12.getPosition());
+
+             halt_path_coordinates[ 11 - warn_idx ] = marker_12.getPosition();
+             updateMarkerPosition(marker_12.getPosition());
+             put_halt_plot();
+          }
+        );
+
+      google.maps.event.addListener(marker_13,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_13.getPosition());
+
+             halt_path_coordinates[ 12 - warn_idx ] = marker_13.getPosition();
+             updateMarkerPosition(marker_13.getPosition());
+             put_halt_plot();
+          }
+        );
+
+
+      google.maps.event.addListener(marker_14,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_14.getPosition());
+
+             halt_path_coordinates[ 13 - warn_idx ] = marker_14.getPosition();
+             updateMarkerPosition(marker_14.getPosition());
+             put_halt_plot();
+          }
+        );
+
+
+      google.maps.event.addListener(marker_15,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_15.getPosition());
+
+             halt_path_coordinates[ 14 - warn_idx ] = marker_15.getPosition();
+             updateMarkerPosition(marker_15.getPosition());
+             put_halt_plot();
+          }
+        );
+
+      google.maps.event.addListener(marker_16,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_16.getPosition());
+
+             halt_path_coordinates[ 15 - warn_idx ] = marker_16.getPosition();
+             updateMarkerPosition(marker_16.getPosition());
+             put_halt_plot();
+          }
+        );
+
+      google.maps.event.addListener(marker_17,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_17.getPosition());
+
+             halt_path_coordinates[ 16 - warn_idx ] = marker_17.getPosition();
+             updateMarkerPosition(marker_17.getPosition());
+             put_halt_plot();
+          }
+        );
+
+
+      google.maps.event.addListener(marker_18,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_18.getPosition());
+
+             halt_path_coordinates[ 17 - warn_idx ] = marker_18.getPosition();
+             updateMarkerPosition(marker_18.getPosition());
+             put_halt_plot();
+          }
+        );
+
+      google.maps.event.addListener(marker_19,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_19.getPosition());
+
+             halt_path_coordinates[ 18 - warn_idx ] = marker_19.getPosition();
+             updateMarkerPosition(marker_19.getPosition());
+             put_halt_plot();
+          }
+        );
+
+
+      google.maps.event.addListener(marker_20,
+                                     'dragend',
+                                     function() 
+          {
+             updateMarkerStatus('Drag ended');
+             geocodePosition(marker_20.getPosition());
+
+             halt_path_coordinates[ 19 - warn_idx ] = marker_20.getPosition();
+             updateMarkerPosition(marker_20.getPosition());
+             put_halt_plot();
+          }
+        );
+
+
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+  google.setOnLoadCallback(initialize);
+        </script>
+      </head>
+  <body>
+    <div id="map_3d" style="height: 400px; width: 600px;"></div>
+    <div id="map_canvas"></div>
+    <div id="info_panel"><b>Marker status:</b></div>
+    <div id="markerStatus"><i>Click and drag the marker.</i></div>
+    
+    <div id="address1"></div>
+ 
+    <form id="form1" name="form1" action="" method="post">
+    <b>&nbsp; Latitude:</b><input type="text" id="lat" name="lat" size="18"/><br />
+    <b>Longitude:</b><input type="text" id="lon" name="lon" size="18"/><br />
+
+    <input id="address" type="text" value="Geneva, Il"/>
+    <input type="button" value="Get Points" onclick="code_address()"/>
+    <input type="button" value="WARN BOUNDARY" onclick="put_warn_boundary()"/>
+    <input type="button" value="HALT BOUNDARY" onclick="put_halt_boundary()"/>
+    </form>
+
+    <div><b>List Of Coordinate Points</b></div>
+    <div id="info"></div>
+    <div id="infidx"></div>
+    <div id="m_id"></div>
+    <div id="infw0"></div>
+    <div id="infw1"></div>
+    <div id="infw2"></div>
+    <div id="infw3"></div>
+    <div id="infw4"></div>
+    <div id="infw5"></div>
+    <div id="infw6"></div>
+    <div id="infw7"></div>
+    <div id="infw8"></div>
+    <div id="infw9"></div>
+    <div id="infh0"></div>
+    <div id="infh1"></div>
+    <div id="infh2"></div>
+    <div id="infh3"></div>
+    <div id="infh4"></div>
+    <div id="infh5"></div>
+    <div id="infh6"></div>
+    <div id="infh7"></div>
+    <div id="infh8"></div>
+    <div id="infh9"></div>
+
+
+  </body>
+</html>

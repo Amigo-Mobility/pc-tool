@@ -1,0 +1,13 @@
+{
+  "total_peripherals" : 8, 
+  "lab options" : "disabled",
+  "super user options" : "disabled",
+  "peripheral_01" : "CS1520",
+  "peripheral_02" : "CAS",
+  "peripheral_03" : "ANOTHER",
+  "peripheral_04" : "STILL",
+  "peripheral_05" : "YET",
+  "peripheral_06" : "MORE"
+  "peripheral_07" : "SOME",
+  "peripheral_08" : "AGAIN"
+}

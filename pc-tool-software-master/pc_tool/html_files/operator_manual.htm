@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<style type = "text/css">
+  .centered_image
+  {
+    text-align: center;
+    margin-top:     92px;
+    margin-bottom:  0px;
+    margin-left:    0px;
+    margin-right:   0px;
+    padding:        0px;
+  }
+  #img_port_conn_place
+  {
+    position:  relative;
+    width:     640px;
+    height:    451px;
+    top:       120px;
+    bottom:    120px;
+    left:      200px;
+  }
+  #img_open_file_place
+  {
+    position:  relative;
+    width:     563px;
+    height:    419px;
+    top:       120px;
+    bottom:    120px;
+    left:      200px;
+  }
+  #img_jb_button_place
+  {
+    position: relative;
+    width:    525px;
+    height:   429px;
+    top:      120px;
+    bottom:   120px;
+    left:     200px;
+  }
+  #list_16_font
+  {
+    position:   relative;
+    top :         80px;
+    left :        84px;
+    margin-left:  60px;
+    margin-right: 80px;
+    font-size:    16pt;
+    color:        red;
+  }
+  #text_20_font
+  {
+    position:   relative;
+    top :         80px;
+    margin-left:  40px;
+    margin-right: 40px;
+    text-align:   center;
+    font-size:    20pt;
+    color:        White;
+    background-color:  Blue;
+  }
+  #text_20a_font
+  {
+    position:   relative;
+    top :         60px;
+    bottom :      80px;
+    margin-left:  40px;
+    margin-right: 40px;
+    text-align:   center;
+    font-size:    20pt;
+    color:        Blue;
+  }
+  #text_16_font
+  {
+    position:   relative;
+    top :         95px;
+    bottom:       90px;
+    margin-left:  40px;
+    margin-right: 40px;
+    font-size:    16pt;
+    color:        Maroon;
+  }
+  #text_14_font
+  {
+    position:   relative;
+    top :         90px;
+    left :        20px;
+    margin-left:  60px;
+    margin-right: 80px;
+    font-size:    14pt;
+    color:        red;
+  }
+  #text_12_font
+  {
+    position:   relative;
+    top :         85px;
+    left :        40px;
+    margin-left:  60px;
+    margin-right: 80px;
+    font-size:    14pt;
+    color:        Maroon;
+  }
+  #bm_12_font
+  {
+    position:   relative;
+    top :         85px;
+    left :        40px;
+    margin-left:  60px;
+    margin-right: 80px;
+    font-size:    12pt;
+    color:        blue;
+    background-color: Transparent;
+    font-style:    oblique;
+  }
+  #pic_caption_12_font
+  {
+    position:   relative;
+    top :         32px;
+    text-align:   center;
+    font-size:    12pt;
+    color:        blue;
+  }
+  #pic_caption_14_font
+  {
+    position:   relative;
+    top :         40px;
+    left :        40px;
+    margin-left:  60px;
+    margin-right: 80px;
+    text-align:   center;
+    font-size:    14pt;
+    color:        blue;
+  }
+  #pic_caption_16_font
+  {
+    position:   relative;
+    top :         80px;
+    bottom :      80px;
+    left :        40px;
+    margin-left:  60px;
+    margin-right: 80px;
+    text-align:   center;
+    font-size:    16pt;
+    background-color: Blue;
+    color:        yellow;
+  }
+  #pic_caption_20_font
+  {
+    position:   relative;
+    top :          120px;
+    bottom :       320px;
+    margin-left:    60px;
+    margin-right:  60px;
+    text-align:   center;
+    font-size:      20pt;
+    color:          blue;
+  }
+
+      body
+      {
+      font-family: arial;
+      font-size: 13px;
+      }
+      #map_canvas
+      {
+      width: 600px;
+      height:  500px;
+      float:   left;
+      }
+      #info_panel
+      {
+      float: left;
+      margin-left: 30px;
+      }
+      #info_panel div
+      {
+        margin-bottom: 5px;
+      }
+    </style>
+
+
+    <title>Programming Tools</title>
+</head>
+<body>
+<a id="bm_12_font" href="#csllc pc tool">CSLLC PC Tool</a>
+<a id="bm_12_font" href="#release package">Release Package</a>
+<a id="bm_12_font" href="#install process">Installation Procedure</a>
+<a id="bm_12_font" href="#load_file">Load Plot File</a>
+<a id="bm_12_font" href="#setup comm port">Setup Communication Port</a>
+<a id="bm_12_font" href="#program uut">Program UUT</a>
+<a id="bm_12_font" href="#system settings">System Settings</a>
+
+<a name="csllc pc tool"></a>
+<h1 id="text_20_font">CSLLC PC Tool</h1>
+<p id ="text_14_font">
+CSLLC PC Tool combines multiple GUI Software packages
+on a single launch platform. The Software packages include:
+</p>
+
+<ul id = "text_12_font">
+<li>CS1108 Motor Controller Programmer</li>
+<li>CS1520 Programmer</li>
+</ul>
+
+<a name="release package"></a>
+<h2 id="text_20_font">Release Package:</h2>
+<p id ="text_14_font">
+The software package includes a zip file containing:
+</p>
+<ul id = "text_12_font">
+<li>bmp_files directory</li>
+<li>html_files directory</li>
+<li>Images directory</li>
+<li>print_files directory</li>
+<li>com_port.ini file</li>
+<li>installed_peripherals.json file</li>
+<li>cs1520_programmer executable</li>
+<li>cs1108_programmer executable</li>
+</ul>
+<h2 id = "text_14_font">bmp Files Directory</h2>
+<p id = "text_12_font">
+The bmp files directory contains the images loaded
+as illustrations in the operator manual.
+</p> 
+<h2 id = "text_14_font">html_files directory</h2>
+<p id = "text_12_font">
+The html files directory contains htm/html files loaded
+at programmer run-time. HTM/HTML files include:
+<ul id="text_12_font">
+<li>html_header.htm   : CS1520 programmer header section</li>
+<li>html_file_end.htm : CS1520 programmer footer section</li>
+<li>markers_length_lat_lng.htm : HTM file invoked when plotting points</li>
+<li>operator_manual.htm : Programmer operator manual</li>
+</ul>
+</p>
+<h2 id = "text_14_font">Images Directory</h2>
+<p id = "text_12_font">
+The Images directory contains Images loaded at programmer 
+run-time conditional on user response.
+</p>
+
+<h2 id = "text_14_font">Print Files Directory</h2>
+<p id = "text_12_font">
+The Print_files directory contains the label and excel
+files used in printing the CS1520 Programmer Plot Label.
+The files include:
+<ul id = "text_12_font">
+<li>cas_label.csv : comma separated value (excel) file</li>
+<li>cas_label.lbx : Brothers printer label file</li>
+</ul>
+</p>
+
+<h2 id = "text_14_font">com_port.ini file</h2>
+<p id = "text_12_font">This file contains the port assignment for the
+USB Dongle and for the USB Connection to the CS1520 Programmer card.
+</p>
+
+<h2 id = "text_14_font">installed_peripherals.json File</h2>
+<p id = "text_12_font">
+The installed peripherals.json (Java Script Object Notation) file
+controls the peripheral options that are activated at run-time.
+</p>
+
+<p id = "text_14_font">session_data.ini  : Session data Repository</p>
+<p id = "text_12_font">
+The Session Data ini file captures and stores the directory where the
+Profile Files are stored, the directory where the Label Files 
+are stored, the directory where the log file is stored, and captures
+the Profile Records added to the system during the session.
+Session Data Row By Row Definition:
+<ul id = "text_12_font">
+<li>1) Profile (*.dat) Files Directory</li>
+<li>2) Label (*.lbx) Files Directory</li>
+<li>3) Log (*.log) File Name including Directory Path</li>
+<li>4) Bitwise variable identifying implemented peripherals</li>
+<li>5 to End) List of Profiles Entered into System</li>
+</ul>
+</p>
+
+
+<a name="install process"></a>
+<h1 id="text_20_font">Installation Procedure:</h1>
+<p id ="text_12_font">
+Download the zp1 file attachment and rename file to type *.zip
+</p>
+<p id ="text_12_font>
+Rename ex1 file extensions to *.exe
+</p>
+<p id ="text_12_font">
+When the download is complete double click on the *.zip file to unzip.
+Click on the zip file to start extracting files:
+File->Extract All...Extraction Wizard will appear
+</p>
+
+<a name="setup comm port"></a>
+<h1 id="text_20_font">Setup Communication Port Assignment</h1>
+<p id ="text_16_font">
+There are two ports that need to be setup to enable communication
+with programmable devices:
+<ul id="text_16_font">
+<li> CS1108 USB Dongle Port </li>
+<li> CS1520 Programming Port </li>
+</ul>
+</p>
+
+<h1 id="text_20_font">USB Dongle Setup</h1>
+
+<p id="text_12_font">
+In order to program coordinate points for Halt and
+Warning Boundary areas, the PC needs to connect to
+the target over USB. 
+</p>
+
+<p id="text_12_font">
+Connect the CS1520 Programming Cable to one of the PC's USB connections.
+</p>
+
+<p id="text_12_font">
+The communication port mapped
+to the device can be observed via the Control Panel: 
+Start->Control Panel->Hardware(tab)->Device Manager.
+Click on the Device Manager tab to display devices
+and expand the Ports (COM & LPT) to display the USB
+Serial Port.
+</p>
+
+<p id="text_12_font">
+When the selected communication port matches the Device 
+Manager Mapped Port, the device is ready to be programmed.
+</p>
+
+<h1 id="text_20_font">Port Assignments</h1>
+<p id="text_16_font">
+Take note of the COM Port number assigned to the USB Ports as follows:
+<ul id="text_12_font">
+<li>USB Dongle : Silicon Labs CP210x USB to UART Bridge <a name="usb dongle"></a></li>
+<li>CS1520 Programmer : CS1520 Serial Port<a name="CS1520 Serial Port"></a></li>
+</ul>
+</p>
+
+<h1 id="text_20_font">Device Manager</h1>
+<p 
+class="centered_image"><img src="..\bmp_files\pc_port_connection.bmp" width: "640px"; height: "451px"; alt=""/>
+</p>
+<h1 id="text_20_font">PORT SELECTION</h1>
+
+<p id="text_14_font">
+Referencing the above illustration:
+<ul id="text_12_font">
+<li>USB Dongle is assigned to COM Port 6</li>
+<li>CS1520 Programmer is assigned to COM Port 9</li>
+</ul>
+</p>
+
+<h1 id="text_20_font">USB to UART Driver Installation</h1>
+<p id="text_14_font">
+USB Driver
+</p>
+<p id="text_12_font">
+In the event where the USB to UART Driver is not found,
+the driver can be retrieved from the Silican Labs home
+website "www.silabs.com"
+The driver for the USB Dongle can be downloaded as follows:
+
+<ul id="text_12_font">
+<li>Via an internet browser advance to www.silab.com</li>
+<li>Download software and documents.</li>
+<li>Download CP210x USB to UART Bridge VCP Driver.</li>
+<li>Download CP210x USB to UART Bridge Virtual COM Port (VCP)
+<li>VCP Drivers are required for device operation as a Virtual COM
+<li>Download for Windows XP/Server 2003/Vista/7(v6.5) CP210x_VCP_WinXP_S2k3_Vista_7.exe</li>
+</ul>
+</p>
+
+<p id="text_12_font">The CP210x USB to UART Bridge Virtual
+COM Port (VCP) drivers are required for device operation
+as a Virtual COM.
+</p>
+<p id="text_12_font">Silicon Laboratories CP210xUSB to UART Bridge Driver Installer
+</p>
+<p id="text_12_font">
+PROMPT: "An older version of this driver set has been found on
+the system and must be removed before continuing installation.
+Do you want to remove the old drivers now?" : REPONSE-> YES
+</p>
+<p id="text_12_font">
+PROMPT: "Ready to uninstall CP2101 USB Composit Device Driver?" : 
+RESPONSE-> YES
+</p>
+
+
+
+<h1 id="text_20_font">LAUNCH CSLLC EXPLORER</h1>
+<p id="text_14_font">
+Double click on the CSLLC Explorer executable to launch. 
+The following panel will display
+</p>
+<p 
+class="centered_image"><img src="..\bmp_files\pc_gui_top_menu.bmp" width: "718px"; height: "640px"; alt=""/>
+</p>
+
+<a name="system settings"></a>
+<h2 id="text_20_font">System Settings</h2>
+<p id ="text_14_font">
+Click the SETTINGS button on the CSLLC EXPLORER Panel to access the
+System Settings Panel. System Settings are protected by the
+following password entry panel.
+</p>
+
+<h2 id="text_20_font">Password Protection</h2>
+<p 
+class="centered_image"><img src="..\bmp_files\pcg_enter_password.bmp" height="300px" width="600px" alt=""/>
+</p>
+
+<p id ="text_12_font">
+Enter the password in order to advance to the System Settings pages
+as depicted in the illustration below.
+</p>
+
+<h1 id="text_20_font">USB Dongle Port Selection</h1>
+
+<p id="text_16_font">
+The COMM Port Label has been pressed (label is in down "dark" position) 
+to indicate the USB Dongle is being selected. From the list of COMM 
+ports 0 through 15 select the port that corresponds to the value
+for the USB Dongle <a href="#usb dongle">USB Dongle Port</a>
+</p>
+
+
+<p
+class="centered_image"> <img src="..\bmp_files\pcg_system_settings_usb_dongle.bmp" height="360px" width="600px" alt=""/>
+</p>
+
+
+<p id="text_12_font">
+The GPS PORT has been pressed (label is in down "dark" position) 
+to indicate the GPS Port is being selected. From the list of COMM 
+ports 0 through 15 select the port that corresponds to the value
+for the GPS <a href="#CS1520 Serial Port">CS1520 Serial Port</a>
+</p>
+
+<h2 id="text_20a_font">CS1520 Programmer Port</h2>
+<p
+class = "centered_image"><img src="..\bmp_files\pcg_system_settings_gps_port.bmp" height="360px" width="600px" alt=""/>
+</p>
+
+<p id ="text_16_font">
+Clicking on the the CS1520 PROG Button invokes the 
+Programming System. The Following screen will appear: 
+</p> 
+
+<h1 id="text_20a_font">Launch CS1520 Programmer</h1> 
+
+<p
+class = "centered_image"><img src="..\bmp_files\jb_top_menu.bmp" height="700px" width="600px" alt="Button Press"/>
+</p>
+
+
+<h1 id="text_20_font">CS1520 Programmer Options</h1> 
+<p id = "text_16_font">
+The CS1520 Programmer provides a method for selecting
+a pre-defined file of latitude/longitude coordinate 
+pairs representing Halt and Warning Boundary areas of 
+operation. Operation of a CS1520 populated mobile 
+vehicle is impacted as follows:
+<ul id="text_12_font"> 
+<li>Vehicle Outside Halt Boundary - Vehicle Inoperable</li>
+<li>Vehicle Outside Warning Boundary - Warning Indication</li>
+<li>Vehicle Inside Warning Boundary - Unihibited Operation
+</ul>
+<ul id="list_14_font"
+From this menu the options are:
+</p> 
+<ul id = "list_16_font">
+<li>HELP      : Access Help Screen to Further describe options </li>
+<li>LOAD FILE : Load an existing Halt/Warning Boundary Areas File <a href="#load_file">Load Plot File</a> </li> 
+<li>PROG UUT  : Write Hal/Warning Boundary Areas to Device <a href="#program uut">Program UUT</a></li>
+<li>EXIT      : Exit the Session </li>
+</ul>
+<a name="load_file"></a>
+<h2 id="text_16_font">LOAD FILE</h2> 
+<p id = "text_16_font">
+The Load File option loads a file of plot points to 
+be programmed into the device. The option initiates an 
+"OPEN FILE" dialog as show below. The User will navigate 
+the browser to the location of the plot file to be loaded 
+and in turn written to the device.
+</p> 
+
+<p
+class = "centered_image"><img src="..\bmp_files\jb_open_file.bmp" height="419px" width="563px" alt=""/>
+</p>
+
+<a name="program uut"></a>
+<h1 id="text_20_font">PROG UUT</h1> 
+<p id="text_16_font">
+The PROG UUT option writes the Warning and Halt
+Boundary areas to the mobile device.Once the User navigates to the location of the plot file, selects the file,
+and clicks on the "OPEN" button, control returns to the main screen where
+the name of the file loaded is identified.
+</p> 
+
+<p
+class = "centered_image"><img src="..\bmp_files\jb_file_selected.bmp" height="700px" width="600px" alt=""/>
+</p>
+
+<p id="text_16_font">
+A time critical sequence exists when attempting to program the target.
+On power up the device "wakes up" for a short period of time then returns to
+"sleep". This short "awake" time is insufficient for programming the 
+device. To solve this issue, a suspend command is initiated immediately 
+after power cycle. In addition, a button press of the red button, as 
+depicted in the following image, needs to occur immediately after 
+power on, after which the "PROG UUT" button is clicked to commence 
+programming. Summary of required steps for programming target follows:
+</p> 
+
+<ul id = "list_16_font">
+<li>Turn Off Power to Target </li>
+<li>Turn On Power to Target</li>
+<li>Press the RED Button as depicted in </li>
+<li>EXIT      : Exit the Session </li>
+</ul>
+
+<p
+class = "centered_image"><img src="..\bmp_files\jb_button_press.bmp" height="429px" width="525px" alt=""/>
+</p>
+
+<p id="text_16_font">AST Reset Button</p>
+
+<p id="text_16_font">
+Successful programming of the target with the latitude and longitude 
+pairs results in the following acknowledge screen. This acknowledge 
+indicates to the user that programming of the plot points for the Halt and
+Warning Boundary areas was successful.
+</p> 
+
+<p
+class = "centered_image"><img src="..\bmp_files\jb_program_success.bmp" height="266px" width="592px" alt="Button Press"\>/>
+</p>
+
+</body>
+</html>

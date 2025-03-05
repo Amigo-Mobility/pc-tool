@@ -1,0 +1,57 @@
+{
+  "software banner" :
+  {
+    "status"     : "active",
+    "caption 01" : "Load Plot File",
+    "caption 02" : "Power ON CS1520",
+    "caption 03" : "Scan Serial Number",
+    "caption 04" : "Press Programmer Fixture RED button",
+    "caption 05" : "Click PROG UUT button"
+  },
+  "master license"  :
+    {
+      "caption" : "LICENSE KEY",
+      "key"     : "16C7D61VXa4A"
+    },
+  "load button" :
+    {
+      "caption" : "LOAD FILE",
+      "status"  : "visible"
+    },
+  "save button" :
+    {
+      "caption" : "SAVE FILE",
+      "status"  : "visible"
+    },
+  "plot map button" :
+    {
+      "caption" : "PLOT MAP",
+      "status"  : "visible"
+    },
+  "map points button" :
+    {
+      "caption" : "MAP POINTS",
+      "status"  : "visible"
+    },
+  "program button" :
+    {
+      "caption" : "PROG UUT",
+      "status"  : "visible"
+    },
+  "help button" :
+    {
+      "caption" : "HELP",
+      "status"  : "visible"
+    },
+  "exit button" :
+    {
+      "caption" : "EXIT",
+      "status"  : "visible"
+    },
+  "edit lat long" :
+    {
+      "caption" : "",
+      "status"  : "visible"
+    },
+
+}

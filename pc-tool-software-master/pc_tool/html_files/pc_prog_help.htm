@@ -1,0 +1,709 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<style type="text/css">
+<!--
+.tab
+  { margin-left: 40px;}
+-->
+  #help_left
+  {
+  position: relative;
+  top:    51px;
+  left:  250px;
+  }
+  #settings_left
+  {
+  position: relative;
+  top:   43px;
+  left: 132px;
+  }
+  #password_left
+  {
+  position: relative;
+  top:   40px;
+  left: 252px;
+  }
+  #enter_left
+  {
+  position: relative;
+  top:   41px;
+  left: 140px;
+  }
+  #comm_port_left
+  {
+  position: relative;
+  top:    40px;
+  left:  178px;
+  }
+  #hex_dec_left
+  {
+  position: relative;
+  top:    44px;
+  left:  192px;
+  }
+
+  #tm_open_profile_left
+  {
+  position: relative;
+  top:    44px;
+  left:  200px;
+  }
+  #tm_write_profile_left
+  {
+  position: relative;
+  top:    44px;
+  left:  192px;
+  }
+  #tm_read_target_left {
+  position: relative;
+  top:    44px;
+  left:  220px;
+  }
+  #tm_write_target_left {
+  position: relative;
+  top:    44px;
+  left:  212px;
+  }
+  #tm_save_profile_left {
+  position: relative;
+  top:    44px;
+  left:  232px;
+  }
+  #tm_edit_profile_left {
+  position: relative;
+  top:    44px;
+  left:  232px;
+  }
+  #edit_profile_left
+  {
+  position: relative;
+  top:    50px;
+  left:  264px;
+  }
+  #tm_exit_program_left
+  {
+  position: relative;
+  top:    44px;
+  left:  260px;
+  }
+  #prp_edit_left
+  {
+  position: relative;
+  top:    42px;
+  left:  128px;
+  }
+  #prp_up_left
+  {
+  position: relative;
+  top:   44px;
+  left:  96px;
+  }
+  #prp_down_left
+  {
+  position: relative;
+  top:   44px;
+  left:  96px;
+  }
+  #settings_browse_left
+  {
+  position: relative;
+  top:    42px;
+  left:  144px;
+  }
+  #settings_create_left {
+  position: relative;
+  top:   42px;
+  left: 144px;
+  }
+  #settings_lab_tech_left {
+  position: relative;
+  top:   44px;
+  left: 154px;
+  }
+  #settings_done_left {
+  position: relative;
+  top:    42px;
+  left:  144px;
+  }
+  #prp_return_left {
+  position: relative;
+  top:   44px;
+  left: 128px;
+  }
+  #prp_up_left
+  {
+  position: relative;
+  top:   50px;
+  left:  96px;
+  }
+  #prp_down_left
+  {
+  position: relative;
+  top:    50px;
+  left:   96px;
+  }
+  #pre_up_left
+  {
+  position: relative;
+  top:   40px;
+  left:  96px;
+  }
+  #pre_pgup_left
+  {
+  position: relative;
+  top:     42px;
+  left:   112px;
+  }
+  #pre_pgup_left
+  {
+  position: relative;
+  top:     42px;
+  left:   142px;
+  }
+  #pre_pgdn_left
+  {
+  position: relative;
+  top:     42px;
+  left:   142px;
+  }
+  #pre_done_left
+  {
+  position: relative;
+  top:   42px;
+  left:  96px;
+  }
+  #prp_pgdn_left
+  {
+  position: relative;
+  top:     42px;
+  left:   142px;
+  }
+  #prp_pgup_left
+  {
+  position: relative;
+  top:     42px;
+  left:   142px;
+  }
+  #ep_down_left
+  {
+  position: relative;
+  top:    42px;
+  left:  128px;
+  }
+  #ep_up_left
+  {
+  position: relative;
+  top:   42px;
+  left:  96px;
+  }
+  #prp_edit_up_left
+  {
+  position: relative;
+  top:   43px;
+  left:  88px;
+  }
+  #prp_edit_down_left
+  {
+  position: relative;
+  top:    42px;
+  left:  112px;
+  }
+  #edit_page_down_left
+  {
+  position: relative;
+  top:   50px;
+  left:  96px;
+  }
+  #edit_page_up_left {
+  position: relative;
+  top:   50px;
+  left:  96px;
+  }
+  #ep_incr_left
+  {
+  position: relative;
+  top:   42px;
+  left:  112px;
+  }
+  #ep_decr_left
+  {
+  position: relative;
+  top:   42px;
+  left:  120px;
+  }
+  #ep_pgup_left
+  {
+  position: relative;
+  top:    44px;
+  left:  142px;
+  }
+  #ep_pgdn_left
+  {
+  position: relative;
+  top:    44px;
+  left:  142px;
+  }
+  #ep_flags_left
+  {
+  position: relative;
+  top:   42px;
+  left:  112px;
+  }
+  a.box {
+  display: block;
+  width: 80px;
+  height: 30px;
+  background-image: url('button_combined.png');
+  }
+
+  a.box:hover {
+  background-position: center bottom;
+  }
+  input.btn
+  {
+  color:#FFFFFF;
+  font: bold small 'trebucket ms', heveltica,sans-serif;
+  background-color: #5e84ff;
+  height:  36;
+  width:  186;
+  border-style:outset;
+  border-color: #000137;
+  border-width: 2px;
+  border-bottom-style:ridge;
+  border-bottom-width: 1px;
+  border-top-color: #0001ff;
+  border-right-color: #000137;
+  border-left-color:#000137;
+  border-bottom-color: #000137;
+  size:landscape;
+  min-width:186;
+  min-height:36;
+
+  }
+</style>
+<title> CSLLC PC GUI Tool</title>
+</head>
+<body>
+<!-- HELP FILE SECTION-->
+  <input type="submit" value="HELP" id="help_left" class="btn" />
+  <h1> PC TOOL HELP </h1>
+  <P style ="margin-left:20px;margin-right:40px;font-size:20pt;color:blue">
+  The PC Tool Help file provides a reference between the options available on the display screens and the function performed by those options. This Help display is accessed by clicking the "HELP!" button from any of the PC Tool display pages. The Help file includes some hierachy discussion and a narrative on each of the individual button options.
+  </P>
+
+  <!-- CONNECT BUTTON SECTION-->
+  <input type="submit" value="CONNECT" id="connect_left" class="btn" />
+  <h1> CONNECT TO TARGET </h1>
+  <P style ="margin-left:20px;margin-right:40px;font-size:20pt;color:blue">
+    The connect button allows the User to change the CS Controller that is connected to the tool. The User would disconnect the current Motor Controller and remove from the bench. A new Motor Controller is then placed next to the system with the EEPROM, control and power connections completed. Once the new Motor Controller is connected the User will press the Connect button to query the Motor Controller for the Device ID, Serial Number, and Firmware Revision. The information is displayed on an acknowledge banner where the User acknowledges the changed Motor Controller by clicking the OK button. Use of the PC Tool resumes as before.
+  </P>
+
+
+  <!--SETTINGS SECTION-->
+  <input type="submit" value="SETTINGS" id="settings_left" class="btn" />
+  <h2> SETTINGS</h2>
+    <P style="margin-left:20px;margin-right:40px;font-size:16pt;color:blue">
+      Settings are password protected options. When the "Settings" button is selected, the User will be prompted to enter the password. 
+    </P>
+    
+    <!-- Password Panel: PASSWORD SECTION -->
+    <input type="submit" value="ENTER PASSWORD" id="password_left" class="btn" />
+    <h3 style="margin-left:60px">ENTER PASSWORD</h3>
+    <P style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+      Enter the password in the "white" textbox to the right of the "ENTER PASSWORD" caption . If the password is valid, control advances to the Settings Panel, otherwise control returns to the previous Panel.
+    </P>
+
+    <!-- Password Panel: ENTER BUTTON SECTION -->
+    <input type="submit" value="ENTER" id="enter_left" class="btn" />
+    <h3 style="margin-left:60px">ENTER</h3>
+    <P style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+      Press the "ENTER" button when the password entry is complete. If the password entered is valid, control advances to the Settings Panel.
+    </P>
+
+    <!-- Settings Page: Set Comm Port Section -->
+    <h2 style ="text-indent:40px" > Settings Panel Options:
+    </h2>
+    <input type="submit" value="COMM PORT:" id="comm_port_left" class="btn" />
+    <h3 style ="text-indent:40px"> Set Comm Port</h3>
+    <P style  ="margin-left:60px;text-align:left;font-size:16pt;color:blue;margin-right:60px">
+      Adjacent to the "COMM PORT" field is a selection box containing a list of possible Communication Ports where the USB Dongle may have been connected. By selecting one of these comm ports from the list, the User initializes the USB Dongle Port Setting to the port where the Dongle is connected.
+    </P>
+    
+    <!-- Settings Page [Create / Browse] Section-->
+    <h3 style ="text-indent:40px"> "Create"/"Browse" Log File</h3>
+    <P style ="margin-left:60px;text-align:left;font-size:16pt;color:blue;margin-right:60px"> 
+    The Log file is the repository for capturing and recording Programming Operations during PC Tool sessions. Target Programming Functions cannot occur until the location of the Log File has been established. Attempting to program a controller, without first setting up the log file, will result in the display of a log error display panel indicating the Log File is not found. The User selects the "BROWSE" button to browse for the location of an existing log file. The User selects the "CREATE" button to create a Log File, and then select the "BROWSE" button to browse to the directory where the log file was created. On startup, the Settings Display Panel automatically points to the default log file and lists the path to the file in the text field adjacent to the "LOG FILE NAME" caption.
+    </P>
+    
+    <!-- Settings Page: Browse Button Section-->
+    <input type="submit" value="BROWSE" id="settings_browse_left" class="btn" />
+    <h4 style ="text-indent:60px">BROWSE:</h4>
+    <p style ="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">    
+    The "BROWSE" Button is used to browse for the location of an existing log file. When the "BROWSE" button is pressed, an Open Dialog is displayed where the User can navigate to the directory where the Log File is stored.
+    </p>
+    
+    <!-- Settings Page:  Create Button Section -->
+    <input type="submit" value="CREATE" id="settings_create_left" class="btn" />
+    <h4 style ="text-indent:60px">CREATE:</h4>
+    <p style ="margin-left:80px;text-align:left;margin-right:80px;font-size:16pt;color:blue">
+      The "CREATE" button is used to Create a Log File. Controllers cannot be programmed until a Log File has been selected. Pressing the "CREATE" button automatically builds a log file name string with the current date and time embedded in the name. A "SAVE AS" dialog is opened with the created string entered as the proposed File Name. The User may use the default created File Name or may manually enter an alternate File Name. The User is required to navigate to the directory where the Log File is to be stored. Once selected, the Log File complete path is written to the data_dump.ini file.
+      Note: The PC Tool is initialized with a default log file setup in the directory where the executable is launched.
+    </p>
+
+    <!-- Settings Page: Done Button Section -->
+    <input type="submit" value=" DONE " id="settings_done_left" class="btn" />
+    <h4 style ="text-indent:80px">DONE:</h4>
+    <p style ="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+      The "DONE" button is used to end the Settings option selections. Press the "DONE" button when selections are complete and return to the previous panel.
+    </p>
+
+    <!-- Settings Page:  Lab Technician Checkbox Section-->
+    <input type="submit" value=" OEM Technician MODE" id="settings_lab_tech_left" class="CheckBox" />
+    <h4 style ="text-indent:60px">OEM Technician:</h4>
+    <p style ="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+      The OEM Technician Mode checkbox when "checked" enables the LAB Technican capabilities of the PC Tool. When the OEM Technician Mode is enabled, additional display panel options are available for use.
+    </p>
+     
+
+    <!--Top Level Menu Section-->
+    <h1> Top Menu Options (Default)</h1>
+    <P style="margin-left:20px;margin-right:40px;font-size:20pt;color:blue">
+      The Top Menu Panel (Default) provides options Opening a Profile File and for Writing the selected Profile File to the Target
+    </P>
+    <!-- OPEN Profile -->
+    <input type="submit" value=" Open Profile" id="tm_open_profile_left" class="btn" />
+    <h2 style="margin-left:40px">OPEN PROFILE</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "OPEN PROFILE" button, when "clicked", displays an Open Profile Form. The Open Profile Form provides options provides options for opening Profiles.
+    </P>
+ 
+    <!-- Write Profile Section-->
+    <input type="submit" value=" Write Profile" id="tm_write_profile_left" class="btn" />
+    <h2 style="margin-left:40px">Write Profile</h2>
+    <P style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "WRITE PROFILE" button, when "clicked", displays a Write Profile Form. The Write Profile Form provides options for selecting "previously loaded" Profiles to be written to the Target Device.
+    </P>
+      
+    <h1> Top Menu (OEM TECH OPTIONS)</h1>
+    <!-- Save Profile Section -->  
+    <input type="submit" value=" Save Profile " id="tm_open_profile_left" class="btn" />
+    <h2 style="margin-left:40px">Save Profile</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "SAVE PROFILE" button, when "clicked", displays a Save Profile Form. The Save Profile Form provides options for selecting "previously loaded" Profiles to be saved to an ASCII Profile File.
+    </P>
+
+    <!-- Print Profile Section -->  
+    <input type="submit" value=" Print Profile " id="Submit1" class="btn" />
+    <h2 style="margin-left:40px">Print Profile</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "Print PROFILE" button, when "clicked", displays a Print Selected Profile Form. The Print Selected Profile Form provides options for selecting "previously loaded" Profiles to be printed as a report of EEPROM settings.
+    </P>
+
+    <!-- Top Menu: Write Profile Section-->
+    <input type="submit" value=" EDIT PROFILE" id="tm_write_profile_left" class="btn" />
+    <h2 style="margin-left:40px">Edit Profile</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "EDIT PROFILE" button is displayed when one of the Open Profile Options has been selected. When the Edit Profile Button is "clicked", a Compare Profile Form is displayed. The Print Selected Profile Form provides options for selecting Profile Information to be displayed.
+    </P>
+
+    <!-- Top Menu: Read Target Section -->
+    <input type="submit" value=" READ TARGET"     id="tm_read_target_left" class="btn" />
+    <h2 style="margin-left:40px">READ TARGET</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "READ TARGET" button is used to Read the Target EEPROM into a Local EEPROM Buffer. The "READ TARGET" button is displayed when Lab Technician Mode is enabled. When the "READ TARGET" button is "clicked", Target EEPROM is read and the contents is stored in a local buffer.
+    </P>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 01 Options: Bitwise fields for Configuration Register 01
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 02 Options: Bitwise fields for Configuration Register 02
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 03 Options: Bitwise fields for Configuration Register 03
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 04 Options: Bitwise fields for Configuration Register 04
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 05 Options: Bitwise fields for Configuration Register 05
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Configuration 06 Options: Bitwise fields for Configuration Register 06
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Motor Flags: Bitwise fields for Motor Configuration
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Drive 01 : Outdoor Settings
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Drive 02 : Indoor Settings
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Motor Throttle : Motor and Trottle Settings
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Timers : System runtime timers
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Voltages : Collection of Voltage and Current Settings
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Metrics : Run time metrics during operation of the Motor Controller
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Analog Throttle : Analog Throttle bitwise settings
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Serial Throttle : Serial Throttle bitwise settings   
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Inverted Throttle : Inverted Serial Throttle bitwise settings   
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Fault Codes : Log of up to 16 Faults that occurred during runtime
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Calibration : List of the calibration settings for the Motor Controller
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Counters : List of the Counters for Timer, Motor, Charger, Low Battery, Temperature, and throttle Faults
+      </UL>
+
+
+    <!-- Top Menu: Write Target Section-->
+    <input type="submit" value=" WRITE TARGET" id="tm_write_target_left" class="btn" />
+    <h2 style="margin-left:40px">Write Target</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "WRITE TARGET" button is used to Write the Local EEPROM Buffer contents to the Target EEPROM. The WRITE Target button appears, when Lab Technician Mode is enabled, after Target EEPROM has been read. Once Target EEPROM has been read the Local EEPROM Buffer contains an exact copy of Target EEPROM. The User may modify the Local EEPROM Buffer by selecting the "EDIT PROFILE" button on the Main Panel. The Edit Profile options provide the ability to change the Local EEPROM Buffer contents. The changes made during the Edit Profile Session can be written to EEPROM by selecting the WRITE TARGET button. If no changes are made to EEPROM during an Edit Profile Session, there is no point in writing to the target since the local buffer and EEPROM contents would already be the same.
+    </P>
+
+
+    <!-- Top Menu: Save Profile Section -->
+    <input type="submit" value=" SAVE PROFILE"    id="tm_save_profile_left" class="btn" />
+    <h2 style="margin-left:40px">SAVE PROFILE</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The "SAVE PROFILE" button is used to save a copy of the Local EEPROM Buffer as read from Target EEPROM. The "SAVE PROFILE" button is displayed when the Lab Technician Mode is enabled, after Target EEPROM has been read. When the "SAVE PROFILE" button is "clicked", a "Save As" dialog is displayed. The User enters a Profile File (*.dat) name and the Local EEPROM Buffer contents is written to the User selected Profile File Name. This "SAVE PROFILE" button provides a method for capturing settings from a selected controller by writing the contents of that controller to a Profile file. This is the means for sharing settings values across a number of controllers.
+    </P>
+
+    <!-- Top Menu: Edit Profile Section -->
+    <input type="submit" value=" EDIT PROFILE"    id="tm_edit_profile_left" class="btn" />
+    <h2 style="margin-left:40px">EDIT PROFILE</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+    The "EDIT PROFILE" button is displayed when Lab Technician Mode is enabled and Target EEPROM has been read. When the "EDIT PROFILE" button is "clicked", control advances to a Panel of Profile Editing options. These options include the ability to compare two profiles, the ability to compare profile 1 with the Local EEPROM Buffer contents, and the ability to modify Profile 1, Profile 2, and Local EEPROM Buffer selected data items.
+    </P>
+    
+    <!-- Top Menu: Exit Profile Section -->
+    <input type="submit" value="EXIT PROGRAM" id="tm_exit_program_left" class="btn" />
+    <h2 style="margin-left:40px">EXIT PROGRAM</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+    The "EXIT PROGRAM" button is used to Exit the PC Tool Session. When "EXIT PROGRAM" is clicked, the PC Tool interactive session ends.
+    </P>
+    
+    <!-- Edit Profile: Edit Profile Summary Section -->
+    <input type="submit" value=" EDIT PROFILE " id="edit_profile_left" class="btn" />
+    <h1 style="margin-left:20px">EDIT PROFILE</h1>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      EDIT PROFILE Options for Profile 1, Profile 2, and the Local EEPROM Buffer. This section further describes the Top Menu Panel "EDIT PROFILE" option. Edit Profile provides options for examining and modifying Profile 1, Profile 2, and the Local EEPROM Buffer. The Edit Profile session permits the user to compare a two Profile Files and compare a Profile File with the contents of the Local EEPROM Buffer. The comparisons are limited to selected data items that pertain to the operation of the controller and come in two forms. The first form is byte wise comparisons (e.g. Profile 1 Forward Speed compared with Profile 2 Forward Speed). The second form includes bitwise values provided within a selected byte (e.g. Throttle flags byte Analog Inverted Bit for Profile 1 compared with the corresponding value in EEPROM). The comparisons are side by side listings with Profile 1 presented in Column 1 and either Profile 2 or EEPROM presented in Column 2. The display is formatted into ten rows with each row containing:
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          Description: A description of the field
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Profile 1 Converted Value: Data value represented in a manner that is meaningful to the User
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Profile 1 Raw Value: Raw data byte value. Toggled between Hex and Dec representation by the User
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Left Arrow: Pressing this arrow transfers the value from the second column to the first column
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Right Arrow: Pressing this arrow transfers the value from the first column to the second column
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Profile 2/EEPROM Converted Value: Data value represented in a manner that is meaningful to the User
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        Profile 2/EEPROM Raw Value: Raw data byte value. Toggled between Hex and Dec representation by the User
+      </UL>
+      <UL style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+        WRITE button: This button appears when the EEPROM is displayed in column 2 and the contents of local EEPROM buffer is different than the contents of Target EEPROM
+      </UL>
+    </P>
+    <P style ="margin-left:40px;margin-right:40px;font-size:20pt;color:blue">
+      Changes made to either Profile 1 or Profile 2 during the Edit Profile Session change the contents of the respective profile local buffer. Changing the EEPROM contents modifies the local EEPROM buffer pending a Write operation. For every value in the local EEPROM buffer that is changed, a WRITE button appears to the right of the row where the change was made. Pressing the WRITE button writes a single value from the local EEPROM buffer to the Target EEPROM. On a given Profile Edit Page, whenever the local EEPROM contents is modified or is different from Target EEPROM, a "WRITE" button appears above the column where all the row-specific "WRITE" buttons would appear. Pressing this WRITE button would write all of the changed values in the Local EEPROM Buffer that are different from the Target EEPROM contents. 
+    </P>
+
+
+    <!-- Edit Profile Session: Up Button Section-->
+    <input type="submit" value=" UP " id="ep_up_left" class="btn" />
+    <h3 style ="margin-left:40px">UP</h3>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The Edit Profile "UP" button appears when the number of items for display is greater than the number of rows on the panel ("10"). When the "Up" button is pressed, the Edit Profile rows of comparison data "scroll up" exposing data rows off the display screen at the top.
+    </P>
+
+    <!-- Edit Profile Session: Down Button Section-->
+    <input type="submit" value="DOWN" id="ep_down_left" class="btn" />
+    <h3 style ="margin-left:40px">DOWN</h3>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The Edit Profile "DOWN" button appears when the number of items for display is greater than the number of rows on the panel ("10"). When the "Down" button is pressed, the Edit Profile rows of comparison data "scroll down" exposing data rows off the display screen at the bottom.
+    </P>
+
+    <!-- Edit Profile Session: INCR Button Section-->
+    <input type="submit" value="INCR" id="ep_incr_left" class="btn" />
+    <h3 style ="margin-left:40px">INCR</h3>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The Edit Profile INCR button is displayed when a raw data value selection is made from one of Profile 1, Profile 2, or EEPROM. When the "INCR" button is pressed, the "selected" raw data value increments by a value of one ("1"). The "calculated value" to the left of the raw value reflects the newly changed value. The increment will continue, for each "INCR" button press until the limit for the value is reached.
+    </P>
+
+    <!-- Edit Profile Session: DECR Button Section-->
+    <input type="submit" value="DECR" id="ep_decr_left" class="btn" />
+    <h3 style ="margin-left:40px">DECR</h3>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The Edit Profile DECR button is displayed when a raw data value selection is made from one of Profile 1, Profile 2, or EEPROM. When the "DECR" button is pressed, the "selected" raw data value decrements by a value of one ("1"). The "calculated value" to the left of the raw value reflects the newly changed value. The decrement will continue, for each "INCR" button press until the limit for the value is reached.
+    </P>
+
+    <!-- Edit Profile Session: BIT Wise Fields-->
+    <input type="submit" value="FLAGS" id="ep_flags_left" class="btn" />
+    <h3 style ="margin-left:40px">Flags</h3>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      Flags or Bitwise fields are bit values stored in a single byte. A byte of EEPROM data can contain up to eight bitwise fields each of which will have the value ("0") ("1"). Depending on the disposition of the individual flag signal the meaning of the value "0" can be assigned with "ON" or "OFF". On the Flags display page only the meaning of the bitwise field is display in the form of "ON" or "OFF". For those values that are eligible to be modified, the local buffer values can be toggled by clicking on the field (e.g. clicking on "OFF" changes to "ON"). For the EEPROM values, if the field is authorized to be modified in Target EEPROM, when a single bit in a data byte is changed, a single WRITE button appears. When the WRITE button is subsequently pressed, the modified byte value from the local buffer is written to Target EEPROM
+    </P>
+
+
+    <!-- Top Menu: HEX DEC Toggle Button Section -->
+    <input type="submit" value="[HEX/DEC]" id="hex_dec_left" class="btn" />
+    <h2 style="margin-left:40px">[HEX/DEC]</h2>
+    <P style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+    This HEX/DEC Toggle Button option is displayed when Lab Technician Mode is enabled. Pressing this button toggles the display of the raw data values from Hex to Decimal and from Decimal to Hex format. The impact of this button is only seen on the Edit Profile Pages of specific data item values.
+  </P>
+
+
+    <!-- Data Dump INI: Data Dump Section -->
+    <h2 style="margin-left:20px">MISCELLANEOUS</h2>
+    <h3 style="margin-left:40px">Session Information</h3>
+    <P style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      The operation of the PC Tool is managed by a repository for session settings called the data_dump.ini. This file resides in the directory where the executable is launched. The file manages the settings for:
+      <UL style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+        Profile Files: Stores the last Directory accessed when attaching a Profile File to the Profile Records
+      </UL>
+      <UL style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+        Label Files: Stores the last Directory accessed when attaching a Label File to the Profile Records.
+      </UL>
+      <UL style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+        Log File: Stores the directory and file path to the Log File where PC Tool Session information is logged
+      </UL>
+      <UL style="margin-left:80px;margin-right:80px;font-size:16pt;color:blue">
+        Stores the complete list of Profile Records created from all of the interactive PC Tool Sessions.
+      </UL>
+    </P>
+      
+      <!-- comm port section -->
+      <h3 style="margin-left:40px">Comm Port File</h3>
+        <P style="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+          The com_port.ini file contains the initial setting value for the COMM Port connection. This file is updated from the SETTINGS Panel to reflect the selected Comm Port.
+        </P>
+
+
+    <!--Profile Record Section-->
+    <h1>Profile Records</h1>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      The User selects a Profile File by clicking on a Profile Record Profile File Name. When a Profile File is selected control returns to the previous Panel. The Profile Record Panel provides a number of buttons used in navigating the Profile File Records. The Profile Record Panel buttons include:
+    </P>
+
+    <!-- Profile Record RETURN button section -->
+    <input type="submit" value=" RETURN" id="prp_return_left" class="btn" />
+    <h2 style="margin-left:40px">Return </h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+    When the Profile Record Panel "RETURN" button is pressed control return to the Top Menu Panel without selecting a Profile Record.
+    </P>
+    
+    <!-- Profile Record Panel EDIT button section -->
+    <input type="submit" value=" EDIT" id="prp_edit_left" class="btn" />
+    <h2 style ="margin-left:40px">EDIT</h2>
+    <P style ="margin-left:60px;margin-right:60px;font-size:16pt;color:blue">
+      When the Profile Record Panel "EDIT" button is pressed control advances to the Profile Record Edit Panel. The Profile Record "EDIT" option is password protected. When the "EDIT" button is pressed, an "Enter Password" dialog box is displayed where the User is required to enter the password in order to continue to the "Edit Profile Record Option". If the Password is not valid, control remains on the Profile Record Panel. Once the "EDIT" option is successfully selected, the User may modify the profile records as specified in the Edit Profile Record Section:
+    </P>
+    
+    <!-- Profile Record Panel Up Button Section-->
+    <input type="submit" value=" UP " id="prp_up_left" class="btn" />
+    <h3 style ="margin-left:30px">UP</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Panel "UP" button is pressed, the records "scroll up" exposing records from the list of Profile Records that appear off the display screen at the top.
+    </P>
+    
+    <!-- Profile Record Panel Down Button Section-->
+    <input type="submit" value=" DOWN" id="prp_down_left" class="btn" />
+    <h3 style ="margin-left:30px">Down</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Panel "DOWN" button is pressed, the records "scroll down" exposing records from the list of Profile Records that appear off the display screen at the bottom.
+    </P>
+
+    <!-- Profile Record Panel Up Button Section-->
+    <input type="submit" value=" PGUP" id="prp_pgup_left" class="btn" />
+    <h3 style ="margin-left:30px">Page Up</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Panel "PGUP" button is pressed, the records "scroll up" ten records at a time exposing records from the list of Profile Records that appear off the display screen at the top.
+    </P>
+
+    <!-- Profile Record Panel Down Button Section-->
+    <input type="submit" value=" PGDN" id="prp_pgdn_left" class="btn" />
+    <h3 style ="margin-left:30px">Page Down</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Panel "DOWN" button is pressed, the records "scroll down" ten records at a time exposing records from the list of Profile Records that appear off the display screen at the bottom.
+    </P>
+
+
+  <!-- Profile Record Edit Panel: Select Profile Record-->
+  <h2 style ="margin-left:40px">Profile Name</h2>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      Clicking on a blank Profile File name field Once selected, the User may modify the profile records as follows:
+    </P>
+
+    <!-- Profile Record Edit Panel: Buttons below appear on the Edit Profile Records Panel where Profile Records can be added and modified -->
+    <h2 style ="margin-left:20px">Edit Profile Records</h2>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      The Profile Record Edit Panel is accessed by clicking the "EDIT" button from the Select Profile Record Panel. The Edit Profile Record section describes the options available for modifying and creating Profile Records. The user selects Profile File Names and Label File Names via open file dialog sessions. The Profile Record description field, entered into a text field, further describes the unique properties of the Profile Record.
+    </P>
+
+    <!-- Profile Record Edit Up Button Section-->
+    <input type="submit" value=" UP " id="pre_up_left" class="btn" />
+    <h3 style ="margin-left:30px">UP</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Edit "Up" button is pressed, the records "scroll up" exposing records from the list of Profile Records that appear off the display screen at the top.
+    </P>
+    
+    <!-- Profile Record Edit Down Button Section-->
+    <input type="submit" value=" DOWN" id="pre_up_left" class="btn" />
+    <h3 style ="margin-left:30px">Down</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Edit "Down" button is pressed, the records "scroll down" exposing records from the list of Profile Records that appear off the display screen at the bottom.
+    </P>
+
+    <!-- Profile Record Edit Up Button Section-->
+    <input type="submit" value=" PGUP" id="pre_pgup_left" class="btn" />
+    <h3 style ="margin-left:30px">Page UP</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Edit "PGUp" button is pressed, the records "scroll up" ten records at a time exposing records from the list of Profile Records that appear off the display screen at the top.
+    </P>
+    <!-- Profile Record Edit Down Button Section-->
+    <input type="submit" value=" PGDN" id="pre_pgdn_left" class="btn" />
+    <h3 style ="margin-left:30px">Page Down</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Edit "Down" button is pressed, the records "scroll down" ten records at a time exposing records from the list of Profile Records that appear off the display screen at the bottom.
+    </P>
+    
+    <!-- Profile Record Edit Done Button Section-->
+    <input type="submit" value=" DONE" id="pre_done_left" class="btn" />
+    <h3 style ="margin-left:30px">Done</h3>
+    <P style ="margin-left:40px;margin-right:40px;font-size:16pt;color:blue">
+      When the Profile Record Edit "Done" button is pressed, modifying the Profile Records is completed. Control returns to the selct Profile Record Panel.
+    </P>
+    
+    
+
+    
+</body>
+</html>
